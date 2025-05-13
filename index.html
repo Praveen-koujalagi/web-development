@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="black">
+        <caption>Food Menu</caption>
+        <thead>
+            <tr>
+                <th rowspan="2"> Item</th>
+                <th colspan="2">Price</th>
+            </tr>
+            <tr>
+                <th>INR</th>
+                <th>USD</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Frootie</td>
+                <td>10</td>
+                <td>0.14</td>
+            </tr>
+            <tr>
+                <td>Samosa</td>
+                <td>12</td>
+                <td>0.17</td>
+            </tr>
+            <tr>
+                <td>chips</td>
+                <td>20</td>
+                <td>0.8</td>
+            </tr>
+        </tbody>
+    </table>
+    <form action="/action?">
+
+        <div>
+        <label for="foodItem">Food Item:
+            <input type="text" id="foodItem" name="foodItem" placeholder="Enter food item">
+        </div>
+        <button>
+            <input type="submit" value="Submit">
+        </button>
+    </form>
+    <form action="https://www.google.com/search">
+        <input type="text" name="q" placeholder="Search Google">
+        <button>search</button>
+        <br>
+        <input type="checkbox" name="age" id="age" checked >
+        <label for="age">I am 18 years old</label>
+        <button>submit</button>
+        <br>
+        <div>
+            choose your proffesion:
+            <select name="proffesion" id="proffesion">
+                <option> select your option </option>
+                <option value="engineer">Engineer</option>
+                <option value="teacher">Teacher</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <div>
+            <label for="val">select your volume</label>
+            <input type="range" name="val" id="val" min="0" max="100" step="10">
+            <button>submit</button>
+        </div>
+    </form>
+</body>
+</html>

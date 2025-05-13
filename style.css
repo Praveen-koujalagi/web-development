@@ -1,0 +1,96 @@
+*{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#login{
+    color: blueviolet;
+    background-color: lightgray;
+}
+#signup{
+    color: blueviolet;
+    background-color: rgb(218, 22, 22);
+}
+.upvote{
+    color: red;
+    font-weight: bold;
+    background: burlywood;
+    border: 2px solid darkred;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+#mydiv p{
+    color: blue;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    background-color: lightgray;
+    padding: 10px;
+}
+
+/* descendent selector */
+p a{
+    color: blue;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    background-color: rgb(187, 106, 106);
+    padding: 10px;
+    text-decoration: none;
+}
+nav ul li {
+    color: rgb(192, 25, 214);
+    font-size: 20px;
+    font-weight: bold;
+    
+   
+}
+
+p + h3{
+    text-decoration: underline;
+}
+
+.upvote + button{
+    background: rgb(47, 47, 136);
+    border: 1px solid darkblue;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+div > input{
+    background-color: rgb(221, 36, 196);
+}
+
+input[type="text"]{
+    background-color: lightgray;
+    color: blueviolet;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 5px;
+    border: 2px solid blueviolet;
+}
+input[type="password"]{
+    background-color: lightgray;
+    color: blueviolet;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 5px;
+    border: 2px solid blueviolet;
+}
+
+p::selection{
+    background: rgb(189, 124, 87);
+    color: white;
+}
+p::marker{
+    color: blue;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    background-color: lightgray;
+    padding: 10px;
+}
