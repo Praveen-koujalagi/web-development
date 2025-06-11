@@ -153,3 +153,86 @@ const arrowObj = {
         console.log(`Hello, my name is ${arrowObj.name}`);
     }
 };
+
+// array methods in js
+const numbersArray = [1, 2, 3, 4, 5];   
+const squaredNumbers = numbersArray.map(num => num * num);
+console.log(squaredNumbers); // [1, 4, 9, 16, 25]
+// filter method in js
+const evenNumbers = numbersArray.filter(num => num % 2 === 0);
+console.log(evenNumbers); // [2, 4] 
+// reduce method in js
+const sumOfNumbers = numbersArray.reduce((accumulator, current) => accumulator + current, 0);
+console.log(sumOfNumbers); // 15    
+// find method in js
+const firstEvenNumber = numbersArray.find(num => num % 2 === 0);
+console.log(firstEvenNumber); // 2
+// forEach method in js
+numbersArray.forEach(num => {
+    console.log(num);
+});
+// every method in js   
+const allEven = numbersArray.every(num => num % 2 === 0);
+console.log(allEven); // false
+
+// default parameters in js
+function multiply(a, b = 1) {
+    return a * b;
+}
+
+// spread operator in js
+function sum(...args) {
+    return args.reduce((acc, curr) => acc + curr, 0);
+}
+// spread with arrays literals
+const array1 = [1, 2, 3];
+const array2 = [4, 5, 6];
+const combinedArray = [...array1, ...array2];
+console.log(combinedArray); // [1, 2, 3, 4, 5, 6]
+
+// spread with objects literals
+const obj1 = { a: 1, b: 2 };
+const obj2 = { c: 3, d: 4 };
+const combinedObj = { ...obj1, ...obj2 };
+console.log(combinedObj); // { a: 1, b: 2, c: 3, d: 4 }
+
+// rest in js
+function logArguments(...args) {
+    console.log(args);
+}   
+logArguments(1, 2, 3, 4); // [1, 2, 3, 4]
+
+// destructuring in js
+const personDetails = {
+    name: "David",
+    age: 28,
+    city: "New York"
+};
+const { name, age, city } = personDetails;
+console.log(name); // "David"   
+console.log(age); // 28
+console.log(city); // "New York"    
+// destructuring with arrays
+const numbersList = [10, 20, 30];   
+const [first, second, third] = numbersList;
+console.log(first); // 10
+console.log(second); // 20      
+console.log(third); // 30
+
+// event listeners in js
+document.addEventListener("DOMContentLoaded", () => {
+    const button = document.getElementById("myButton");
+    button.addEventListener("click", () => {
+        alert("Button clicked!");
+    });
+});
+
+// double click event listener
+document.addEventListener("DOMContentLoaded", () => {
+    const doubleClickButton = document.getElementById("doubleClickButton");
+    doubleClickButton.addEventListener("dblclick", () => {
+        alert("Button double-clicked!");
+    });
+});
+
+
