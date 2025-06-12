@@ -235,4 +235,70 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+// event listerners for elements
+document.addEventListener("DOMContentLoaded", () => {
+    const hoverElement = document.getElementById("hoverElement");
+    hoverElement.addEventListener("mouseover", () => {
+        console.log("Mouse over the element!");
+    });
+    
+    hoverElement.addEventListener("mouseout", () => {
+        console.log("Mouse out of the element!");
+    });
+}); 
+
+// this in event listeners
+document.addEventListener("DOMContentLoaded", () => {
+    const buttonWithThis = document.getElementById("buttonWithThis");
+    buttonWithThis.addEventListener("click", function() {
+        console.log(`Button clicked! This refers to: ${this}`);
+    });
+});
+
+// keyboard events in js
+document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("keydown", (event) => {
+        console.log(`Key pressed: ${event.key}`);
+    });
+    
+    document.addEventListener("keyup", (event) => {
+        console.log(`Key released: ${event.key}`);
+    });
+});
+
+// form submission event in js
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("myForm");
+    form.addEventListener("submit", (event) => {
+        event.preventDefault(); // Prevent the default form submission
+        const inputValue = document.getElementById("textInput").value;
+        console.log(`Form submitted! Input value: ${inputValue}`);
+    });
+});
+
+// extracting values from form inputs
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("myForm");
+    form.addEventListener("submit", (event) => {
+        event.preventDefault(); // Prevent the default form submission
+        const inputValue = document.getElementById("textInput").value;
+        console.log(`Form submitted! Input value: ${inputValue}`);
+    });
+});
+
+// event bubbling in js
+document.addEventListener("DOMContentLoaded", () => {
+    const outerDiv = document.getElementById("outerDiv");
+    const innerDiv = document.getElementById("innerDiv");
+    
+    outerDiv.addEventListener("click", () => {
+        console.log("Outer div clicked!");
+    });
+    
+    innerDiv.addEventListener("click", (event) => {
+        console.log("Inner div clicked!");
+        event.stopPropagation(); // Prevents the event from bubbling up to the outer div
+    });
+});
+
 
