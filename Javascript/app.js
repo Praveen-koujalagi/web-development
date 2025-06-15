@@ -302,3 +302,423 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+// callstack in js
+function firstFunction() {
+    secondFunction();
+}
+
+function secondFunction() {
+    thirdFunction();
+}
+function thirdFunction() {
+    console.log("This is the third function.");
+}
+
+// breakpoints in js
+function debugFunction() {
+    console.log("This is a debug function.");
+    // Set a breakpoint here to inspect the call stack
+    console.log("Debugging...");
+}
+
+// js is single-threaded
+console.log("JavaScript is single-threaded, meaning it executes one task at a time in a single sequence.");
+
+// synchronous programming in js example
+function synchronousExample() {
+    console.log("Task 1: Start");
+    console.log("Task 1: End");
+    console.log("Task 2: Start");
+    console.log("Task 2: End");
+}
+
+// asynchronous programming in js example
+function asynchronousExample() {
+    console.log("Task 1: Start");
+    setTimeout(() => {
+        console.log("Task 1: End (after 2 seconds)");
+    }, 2000);
+    console.log("Task 2: Start");
+    console.log("Task 2: End");
+}
+
+// callback hell in js   // callback hell is a situation where multiple nested callbacks make the code hard to read and maintain.
+function callbackHellExample() {
+    firstTask(() => {
+        secondTask(() => {
+            thirdTask(() => {
+                console.log("All tasks completed!");
+            });
+        });
+    });
+}
+
+// Promises in js give an example
+function firstTask() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            console.log("First task completed");
+            resolve();
+        }, 1000);
+    });
+}
+
+function secondTask() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            console.log("Second task completed");
+            resolve();
+        }, 1000);
+    });
+}
+
+function thirdTask() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            console.log("Third task completed");
+            resolve();
+        }, 1000);
+    });
+}
+
+// .then & .catch in Promises
+function executeWithPromises() {
+    firstTask()
+        .then(() => secondTask())
+        .then(() => thirdTask())
+        .then(() => console.log("All tasks completed using Promises!"))
+        .catch((error) => console.error("An error occurred:", error));
+}
+
+// promis chaining in js means using the .then method to chain multiple asynchronous operations together, allowing each operation to wait for the previous one to complete before executing.
+// Chained Promises example
+function executeChainedPromises() {
+    firstTask()
+        .then(() => {
+            return secondTask();
+        })
+        .then(() => {
+            return thirdTask();
+        })
+        .then(() => {
+            console.log("All tasks completed using chained Promises!");
+        })
+        .catch((error) => {
+            console.error("An error occurred:", error);
+        });
+}
+
+// results & errors in Promises
+function executeWithResultsAndErrors() {
+    firstTask()
+        .then((result) => {
+            console.log(result); // "First task completed"
+            return secondTask();
+        })
+        .then((result) => {
+            console.log(result); // "Second task completed"
+            return thirdTask();
+        })
+        .then((result) => {
+            console.log(result); // "Third task completed"
+            console.log("All tasks completed using Promises with results!");
+        })
+        .catch((error) => {
+            console.error("An error occurred:", error);
+        });
+}
+
+// Using Promises to handle asynchronous tasks
+async function executeTasks() {
+    await firstTask();
+    await secondTask();
+    await thirdTask();
+    console.log("All tasks completed using Promises!");
+}
+
+// Using async/await to handle asynchronous tasks
+async function asyncAwaitExample() {
+    console.log("Starting tasks...");
+    await firstTask();
+    await secondTask();
+    await thirdTask();
+    console.log("All tasks completed using async/await!");
+}   
+
+// async functions in js explain how to write asynchronous code in a more readable way, allowing you to use the await keyword to pause execution until a Promise is resolved or rejected.
+// Fetching data using async/await
+async function fetchData() {
+    try {
+        const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+        const data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.error("Error fetching data:", error);
+    }
+}
+
+// async keyword in js explains that the function will return a Promise and allows the use of await within the function to pause execution until the Promise is resolved or rejected.
+// async function example
+async function asyncFunctionExample() {
+    return "This is an async function example.";
+}
+
+// async function with arrow function
+const asyncArrowFunctionExample = async () => {
+    return "This is an async arrow function example.";
+};
+
+// await keyword in js allows you to pause the execution of an async function until a Promise is resolved or rejected, making it easier to work with asynchronous code.
+// await keyword example
+async function awaitExample() {
+    const result = await new Promise((resolve) => {
+        setTimeout(() => {
+            resolve("This is the result after 2 seconds.");
+        }, 2000);
+    });
+    console.log(result);
+}
+
+// async functions in js are functions that return a Promise and allow the use of the await keyword to pause execution until the Promise is resolved or rejected.
+// async function example
+async function asyncFunctionExample() {
+    return "This is an async function example.";
+}
+
+// api calls in js allow you to make requests to external services and retrieve data, often using the Fetch API or libraries like Axios.
+// Fetch API example 
+function fetchData() {
+    fetch("https://jsonplaceholder.typicode.com/posts")
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => {
+            console.error("Error fetching data:", error);
+        });
+}
+// open source api example
+// hoppscotch
+// hoppscotch is an open-source API development tool that allows developers to test APIs, view responses, and manage API requests in a user-friendly interface.
+// postman
+// Postman is a widely used open-source API development tool that provides a user-friendly interface for testing APIs, managing requests, and viewing responses.
+
+// json methods in js provide functions to parse and stringify JSON data, allowing developers to easily convert between JavaScript objects and JSON strings.
+// JSON.parse() converts a JSON string into a JavaScript object.
+function jsonParseExample() {
+    const jsonString = '{"name": "Alice", "age": 25}';
+    const jsonObject = JSON.parse(jsonString);
+    console.log(jsonObject); // { name: 'Alice', age: 25 }
+}
+
+// JSON.stringify() converts a JavaScript object into a JSON string.
+function jsonStringifyExample() {
+    const jsonObject = { name: "Bob", age: 30 };
+    const jsonString = JSON.stringify(jsonObject);
+    console.log(jsonString); // '{"name":"Bob","age":30}'
+}
+
+// API testing tools in js are tools that help developers test and debug APIs by sending requests, viewing responses, and checking the functionality of endpoints.
+// api testing tools
+// Postman is a popular API testing tool that allows you to send requests to APIs, view responses, and test endpoints.
+// It provides a user-friendly interface for making GET, POST, PUT, DELETE requests and supports various authentication methods.    
+
+// ajax in js is a technique for making asynchronous HTTP requests to retrieve or send data to a server without refreshing the page.
+// Ajax example using XMLHttpRequest
+function ajaxExample() {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://jsonplaceholder.typicode.com/posts", true);
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            const data = JSON.parse(xhr.responseText);
+            console.log(data);
+        } else {
+            console.error("Error fetching data:", xhr.statusText);
+        }
+    };
+    xhr.send();
+}
+
+// http verbs in js refer to the different methods used to interact with web servers, such as GET, POST, PUT, DELETE, etc.
+// HTTP verbs example   
+function httpVerbsExample() {
+    // GET request
+    fetch("https://jsonplaceholder.typicode.com/posts")
+        .then(response => response.json())
+        .then(data => console.log("GET request data:", data))
+        .catch(error => console.error("Error in GET request:", error));
+
+    // POST request
+    fetch("https://jsonplaceholder.typicode.com/posts", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ title: "New Post", body: "This is a new post." })
+    })
+        .then(response => response.json())
+        .then(data => console.log("POST request data:", data))
+        .catch(error => console.error("Error in POST request:", error));
+}
+// PUT request
+function putRequestExample() {
+    fetch("https://jsonplaceholder.typicode.com/posts/1", {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ id: 1, title: "Updated Post", body: "This post has been updated." })
+    })
+        .then(response => response.json())
+        .then(data => console.log("PUT request data:", data))
+        .catch(error => console.error("Error in PUT request:", error));
+}
+// DELETE request
+function deleteRequestExample() {
+    fetch("https://jsonplaceholder.typicode.com/posts/1", {
+        method: "DELETE"
+    })
+        .then(response => {
+            if (response.ok) {
+                console.log("DELETE request successful");
+            } else {
+                console.error("Error in DELETE request:", response.statusText);
+            }
+        })
+        .catch(error => console.error("Error in DELETE request:", error));
+}
+// etc
+
+// status codes in js refer to the numerical codes returned by a server in response to an HTTP request, indicating the status of the request.
+// Common HTTP status codes
+const statusCodes = {
+    200: "OK - The request was successful.",
+    201: "Created - The request was successful and a resource was created.",
+    204: "No Content - The request was successful but there is no content to return.",
+    400: "Bad Request - The server could not understand the request due to invalid syntax.",
+    401: "Unauthorized - The client must authenticate itself to get the requested response.",
+    403: "Forbidden - The client does not have access rights to the content.",
+    404: "Not Found - The server can not find the requested resource.",
+    500: "Internal Server Error - The server has encountered a situation it doesn't know how to handle."
+};
+
+// adding infromation to the urls
+function addQueryParamsToUrl(url, params) {
+    const queryString = new URLSearchParams(params).toString();
+    return `${url}?${queryString}`;
+}
+// Example usage
+const baseUrl = "https://api.example.com/data";
+const params = { userId: 1, sortBy: "name" };
+const fullUrl = addQueryParamsToUrl(baseUrl, params);
+console.log(fullUrl); // Output: "https://api.example.com/data?userId=1&sortBy=name"
+
+
+// http headers in js are key-value pairs sent in the HTTP request or response, providing additional information about the request or response.
+// Common HTTP headers
+const httpHeaders = {
+    "Content-Type": "application/json",
+    "Authorization": "Bearer token",
+    "Accept": "application/json",
+    "User-Agent": "Mozilla/5.0",
+    "Accept": "text/plain",
+    "Cache-Control": "no-cache"
+};
+
+// fetch API in js is a modern way to make HTTP requests in JavaScript, providing a more powerful and flexible feature set compared to the older XMLHttpRequest.
+// Fetch API example    
+function fetchData() {
+    fetch("https://jsonplaceholder.typicode.com/posts")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then(data => console.log(data))
+        .catch(error => console.error("Error fetching data:", error));
+}
+
+// using sync/await with fetch API
+async function fetchDataAsync() {
+    try {
+        const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.error("Error fetching data:", error);
+    }
+}
+
+// Axios in js is a popular JavaScript library for making HTTP requests, providing a simple and easy-to-use API for handling requests and responses.
+// Axios example
+function fetchDataWithAxios() {
+    axios.get("https://jsonplaceholder.typicode.com/posts")
+        .then(response => {
+            console.log(response.data);
+        })
+        .catch(error => {
+            console.error("Error fetching data with Axios:", error);
+        });
+}
+// Using Axios with async/await
+async function fetchDataWithAxiosAsync() {
+    try {
+        const response = await axios.get("https://jsonplaceholder.typicode.com/posts");
+        console.log(response.data);
+    } catch (error) {
+        console.error("Error fetching data with Axios:", error);
+    }
+}
+
+// link html & axios 
+// <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> give example
+// Using Axios in HTML with a button click
+document.addEventListener("DOMContentLoaded", () => {
+    const fetchButton = document.getElementById("fetchButton");
+    fetchButton.addEventListener("click", () => {
+        fetchDataWithAxios();
+    });
+}); 
+// HTML button to trigger Axios request
+// <button id="fetchButton">Fetch Data with Axios</button>
+// Using Axios in HTML with async/await
+document.addEventListener("DOMContentLoaded", () => {
+    const fetchButton = document.getElementById("fetchButtonAsync");
+    fetchButton.addEventListener("click", async () => {
+        await fetchDataWithAxiosAsync();
+    });
+});
+
+// take image from the dog api and display it in the html using axios
+document.addEventListener("DOMContentLoaded", () => {
+    const fetchDogButton = document.getElementById("fetchDogButton");
+    const dogImage = document.getElementById("dogImage");
+
+    fetchDogButton.addEventListener("click", async () => {
+        try {
+            const response = await axios.get("https://dog.ceo/api/breeds/image/random");
+            dogImage.src = response.data.message; // Set the image source to the fetched dog image URL
+        } catch (error) {
+            console.error("Error fetching dog image:", error);
+        }
+    });
+});
+
+// sending headers api request using axios
+async function fetchDataWithHeaders() {
+    try {
+        const response = await axios.get("https://jsonplaceholder.typicode.com/posts", {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer YOUR_ACCESS_TOKEN"
+            }
+        });
+        console.log(response.data);
+    } catch (error) {
+        console.error("Error fetching data with headers:", error);
+    }
+}
