@@ -722,3 +722,4 @@ async function fetchDataWithHeaders() {
         console.error("Error fetching data with headers:", error);
     }
 }
+// js prtactice & learning completed as of now
