@@ -76,8 +76,29 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.get('/api', (req, res) => {
+//wrap async function to handle async errors explaining about async error handling
+// This function wraps an async route handler to catch errors and pass them to the error handling middleware
+const wrapAsync = (fn) => {
+  return (req, res, next) => {
+    fn(req, res, next).catch(next);
+  };
+};
+
+app.get('/api', wrapAsync(async (req, res) => {
     res.send('API Endpoint');
+}));
+
+// mongoose error handling middleware
+// This middleware handles errors related to Mongoose operations, such as validation errors.
+app.use((err, req, res, next) => {
+  if (err.name === 'ValidationError') {
+    return res.status(400).json({
+      error: 'Validation Error',
+      message: err.message,
+      timestamp: new Date().toISOString()
+    });
+  }
+  next(err);
 });
 
 app.get('/', (req, res) => {
@@ -136,3 +157,11 @@ app.listen(3000, () => {
     console.log('🚀 Server is running on port 3000');
     console.log('📊 Logger middleware is active');
 });
+
+
+// error handling in backend applications is crucial for maintaining application stability and providing meaningful feedback to users and developers.
+// Proper error handling ensures that unexpected issues are caught and handled gracefully, preventing application crashes and providing
+// users with clear error messages. It also aids in debugging and maintaining the application by logging errors for further analysis.
+// By implementing structured error handling, developers can create robust applications that are easier to maintain and troubleshoot
+// in production environments.
+// This code demonstrates various middleware functionalities in an Express application, including logging, request counting, authentication, error handling, and async error management.
